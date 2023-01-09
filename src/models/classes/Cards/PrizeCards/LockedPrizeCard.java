@@ -1,14 +1,11 @@
 package models.classes.Cards.PrizeCards;
 
 import models.classes.Player;
-import models.interfaces.Cards;
 
 public class LockedPrizeCard extends PrizeCard {
-    protected int prizeToSet;
 
-    public LockedPrizeCard(String information, String name, int prize, int prizeToSet) {
+    public LockedPrizeCard(String information, String name, int prize) {
         super(information, name, prize);
-        this.prizeToSet = prizeToSet;
     }
 
     /*
@@ -17,7 +14,6 @@ public class LockedPrizeCard extends PrizeCard {
      */
     @Override
     public void action(Player player) {
-        setPrize(getPrizeToSet());
         super.action(player);
     }
 
@@ -26,8 +22,5 @@ public class LockedPrizeCard extends PrizeCard {
         super.information();
     }
 
-    public int getPrizeToSet() {
-        return prizeToSet;
-    }
 
 }

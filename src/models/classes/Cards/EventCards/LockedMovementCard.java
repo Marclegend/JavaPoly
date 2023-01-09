@@ -5,10 +5,10 @@ import models.classes.Player;
 import models.interfaces.Cards;
 
 public class LockedMovementCard extends EventCard{
-
+    protected int lockedPosition;
     public LockedMovementCard(String information, String name, int positionToTransport, int lockedPosition) {
-        super(information, name, positionToTransport);
-        positionToTransport = lockedPosition;
+        super(information, name);
+        positionToTransport = this.lockedPosition;
     }
 
     /*
@@ -17,8 +17,11 @@ public class LockedMovementCard extends EventCard{
      */
     @Override
     public void action(Player player) {
-        setPositionToTransport(getPositionToTransport());
+        setPositionToTransport(getLockedPosition());
         super.action(player);
     }
 
+    public int getLockedPosition() {
+        return lockedPosition;
+    }
 }

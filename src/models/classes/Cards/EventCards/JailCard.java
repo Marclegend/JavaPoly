@@ -16,7 +16,7 @@ public class JailCard extends EventCard {
         We add in the jailPosition so we know where we need to send the player to
      */
     public JailCard(int positionToTransport, String name, String information, int jailPosition) {
-        super(information, name, positionToTransport);
+        super(information, name);
         this.jailPosition = jailPosition;
     }
 

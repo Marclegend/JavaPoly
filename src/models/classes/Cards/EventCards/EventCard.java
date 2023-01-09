@@ -15,9 +15,8 @@ public class EventCard extends Card {
     /*
         EventCard heritage comes from Card, which has the info and the name
      */
-    public EventCard(String information, String name, int positionToTransport) {
+    public EventCard(String information, String name) {
         super(information, name);
-        this.positionToTransport = positionToTransport;
     }
 
 

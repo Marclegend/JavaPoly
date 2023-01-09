@@ -2,18 +2,18 @@ package models.classes.Cards;
 
 import models.Utils.InputInteger;
 import models.classes.Player;
-import models.interfaces.Cards;
 
 public class Property extends Card implements Cloneable {
     protected int id;
-    protected String name;
     protected int price;
     protected Player owner;
+    protected int tileLocation;
 
-    public Property(String information, String name, int price, int id) {
+    public Property(String information, String name, int price, int id, int tileLocation) {
         super(information, name);
         this.price = price;
         this.id = id;
+        this.tileLocation = tileLocation;
     }
 
     /*
@@ -21,7 +21,7 @@ public class Property extends Card implements Cloneable {
      */
     public void chargePlayer(Player playerToPay){
         if (playerToPay.getBalance() > this.price){
-            //TODO: Get the player from the board by getting the Owner's ID
+            this.owner.setBalance(this.owner.getBalance() + this.price);
             playerToPay.setBalance(playerToPay.getBalance() - this.price);
         } else {
             //TODO: Dar la opción de vender propiedades con tal de poder salvarse
@@ -62,8 +62,7 @@ public class Property extends Card implements Cloneable {
                     break;
             }
         } else {
-            player.setBalance(this.price);
-            this.owner.setBalance(this.price);
+            chargePlayer(player);
         }
     }
 
@@ -73,6 +72,10 @@ public class Property extends Card implements Cloneable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getTileLocation(){
+        return this.tileLocation;
     }
 
     public String getName() {
